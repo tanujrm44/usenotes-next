@@ -1,5 +1,6 @@
 import { connectToDB } from "@/db/db"
 import Note from "@/models/notesModel"
+import Link from "next/link"
 
 export default async function AllNotes() {
   interface NoteTypes {
@@ -21,9 +22,11 @@ export default async function AllNotes() {
           >
             <span className="text-lg">{note.title}</span>
             <div className="space-x-2">
-              <button className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
-                Edit
-              </button>
+              <Link href={`edit/${note.id}`}>
+                <button className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
+                  Edit
+                </button>
+              </Link>
               <button className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
                 Delete
               </button>
