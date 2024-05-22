@@ -1,20 +1,16 @@
 import { connectToDB } from "@/db/db"
 import Note from "@/models/notesModel"
 import { redirect } from "next/navigation"
+import * as actions from "@/actions"
 import React from "react"
 
 export default function AddNote() {
   async function createNote(formData: FormData) {
     "use server"
-    const title = formData.get("title")
-    const content = formData.get("content")
-    connectToDB()
-    const res = await Note.create({
-      title,
-      content,
-    })
-    console.log(res)
-    redirect("/")
+    const title = formData.get("title") as string
+    const content = formData.get("content") as string
+
+    actions.addNote(title, content)
   }
   return (
     <div className="my-4 p-4 bg-gray-100 rounded-md shadow-md">

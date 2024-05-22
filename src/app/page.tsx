@@ -1,3 +1,4 @@
+import DeleteButton from "@/components/DeleteButton"
 import { connectToDB } from "@/db/db"
 import Note from "@/models/notesModel"
 import Link from "next/link"
@@ -27,9 +28,7 @@ export default async function AllNotes() {
                   Edit
                 </button>
               </Link>
-              <button className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
-                Delete
-              </button>
+              <DeleteButton>{note.id}</DeleteButton>
             </div>
           </li>
         ))}
